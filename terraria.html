@@ -1,20 +1,59 @@
-<script>
-function launch() {
-    let win = window.open("", "_blank");
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Launch Terraria</title>
+    <style>
+        body {
+            background: #111;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        button {
+            padding: 15px 25px;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            background: #4caf50;
+            color: white;
+        }
+        button:active {
+            transform: scale(0.97);
+        }
+    </style>
+</head>
+<body>
+    <button onclick="launch()">Launch Terraria</button>
 
-    // You "claim" the window by writing to it
-    win.document.write(`
-        <html>
-        <head><title>Terraria</title></head>
-        <body style="background:#000; color:#0f0; font-family:Arial;">
-            <h2>Loading Terraria...</h2>
-            <script>
-                window.location.replace("https://tuffname.thepresenttraveller.com/games/terraria/index.html");
-            <\/script>
-        </body>
-        </html>
-    `);
+    <script>
+        function launch() {
+            // Open a new blank tab
+            let win = window.open("", "_blank");
 
-    win.document.close();
-}
-</script>
+            // Write a temporary HTML loader page into it
+            win.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Loading Terraria...</title>
+                </head>
+                <body style="background:black; color:#0f0; font-family:Arial;">
+                    <h2 style="text-align:center; margin-top:50px;">Loading Terraria...</h2>
+                    <script>
+                        // Redirect FROM the new blank page itself
+                        window.location.replace("https://tuffname.thepresenttraveller.com/games/terraria/index.html");
+                    <\/script>
+                </body>
+                </html>
+            `);
+
+            win.document.close();
+        }
+    </script>
+</body>
+</html>
